@@ -17,7 +17,6 @@ public class CampoDoJogo implements KeyListener {
     private FormatoMatriz pecaGuardada;
     private FormatoMatriz pecaAtual;
     private boolean trocaDisponivel = true;
-    private boolean ajusteParaRotacionarSemEspacoDisponivel;
     private boolean asd;
     private FilaDePecas pecasDisponiveisNoJogo;
     //   private Espaco[][] caixaPecaGuardada = new Espaco[4][4];
@@ -104,7 +103,6 @@ public class CampoDoJogo implements KeyListener {
         String[][] formatoDaPeca = formatoMatriz.getFormatoMatriz();
         copiaDoGridPrincipal = clonarGridPrincipal();
         posicaoPecaNaMatrizPrincipal = new Point[formatoDaPeca.length][formatoDaPeca[0].length];
-        //corDaPecaAtual = formatoMatriz.getCorPeca();
         pecaAtual = formatoMatriz;
 
 
@@ -124,13 +122,8 @@ public class CampoDoJogo implements KeyListener {
 
         }
 
-        // imprimirMatriz(posicaoPecaNaMatrizPrincipal);
-        // System.out.println(colisao(0, +1));
         imprimirGame(copiaDoGridPrincipal);
-//
         pecaFixa = false;
-//
-
 
     }
 
@@ -191,7 +184,6 @@ public class CampoDoJogo implements KeyListener {
 
         preVisualizacaoAltura--;
 
-        // imprimirMatriz(posicaoPecaNaMatrizPrincipal);
 
         for (int i = 0; i < posicaoPecaNaMatrizPrincipal.length; i++) {
             for (int j = 0; j < posicaoPecaNaMatrizPrincipal[0].length; j++) {
@@ -202,16 +194,12 @@ public class CampoDoJogo implements KeyListener {
                     if (copiaDoGridPrincipal.get(posicaoFuturaNaMatrizPrincipal[i][j].y).get(posicaoFuturaNaMatrizPrincipal[i][j].x).getTipo().equals(Espaco.ESPACO_VAZIO))
                         copiaDoGridPrincipal.get(posicaoFuturaNaMatrizPrincipal[i][j].y).get(posicaoFuturaNaMatrizPrincipal[i][j].x).setTipo(Espaco.POSICAO_FUTURA);
 
-                    // System.out.println((posicaoFuturaNaMatrizPrincipal[i][j].y + " ") + posicaoFuturaNaMatrizPrincipal[i][j].x + " fdgdf");
-
-
                 }
 
             }
         }
 
 
-        // imprimirMatriz(posicaoFuturaNaMatrizPrincipal);
         imprimirGame(copiaDoGridPrincipal);
 
     }
@@ -228,7 +216,6 @@ public class CampoDoJogo implements KeyListener {
             for (int j = reversoX ? posicaoPecaNaMatrizPrincipal[0].length - 1 : 0;
                  reversoX ? j >= 0 : j < posicaoPecaNaMatrizPrincipal[0].length; j += reversoX ? -1 : 1) {
                 if (posicaoPecaNaMatrizPrincipal[i][j] != null) {
-                    //   System.out.println(posicaoPecaNaMatrizPrincipal[i][j]);
 
                     String tipo = copiaDoGridPrincipal.get(posicaoPecaNaMatrizPrincipal[i][j].y).get(posicaoPecaNaMatrizPrincipal[i][j].x).getTipo();
 
@@ -269,18 +256,13 @@ public class CampoDoJogo implements KeyListener {
                         Espaco espacoFuturo = gridGame.get(posicaoPecaNaMatrizPrincipal[i][j].y + direcaoY).get(posicaoPecaNaMatrizPrincipal[i][j].x + direcaoX);
 
 
-                        if (!(espacoFuturo.getTipo().equals(Espaco.ESPACO_VAZIO))) {
-//                            if (direcaoY > 0)
-//                                fixarPeca();
+                        if (!(espacoFuturo.getTipo().equals(Espaco.ESPACO_VAZIO)))
+
                             return true;
-                        }
 
 
                     } catch (IndexOutOfBoundsException e) {
 
-//                        if (posicaoPecaNaMatrizPrincipal[i][j].y + direcaoY >= gridGame.size()) {
-//                            fixarPeca();
-//                        }
 
                         return true;
 
@@ -325,7 +307,6 @@ public class CampoDoJogo implements KeyListener {
         }
 
 
-
         //imprimir caixa da peça guardada fazer dps
 //        for (int i = 0; i < caixaPecaGuardada.length; i++) {
 //            for (int j = 0; j < caixaPecaGuardada[0].length; j++) {
@@ -344,8 +325,6 @@ public class CampoDoJogo implements KeyListener {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
 
-                //  if (matriz[i][j] != null)
-
                 System.out.print(matriz[i][j]);
 
             }
@@ -353,7 +332,6 @@ public class CampoDoJogo implements KeyListener {
         }
 
     }
-
 
 
     private ArrayList<ArrayList<Espaco>> clonarGridPrincipal() {
@@ -399,12 +377,10 @@ public class CampoDoJogo implements KeyListener {
                 fixarPeca();
                 break;
             case KeyEvent.VK_UP:
-                ajusteParaRotacionarSemEspacoDisponivel = true;
                 asd = true;
                 girarPecaHorario();
                 break;
             case KeyEvent.VK_CONTROL:
-                ajusteParaRotacionarSemEspacoDisponivel = true;
                 asd = true;
 
                 girarPecaAntiHorario();
