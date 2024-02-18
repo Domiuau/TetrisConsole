@@ -2,10 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.List;
 
 public class CampoDoJogo implements KeyListener {
 
@@ -19,21 +17,61 @@ public class CampoDoJogo implements KeyListener {
     private boolean trocaDisponivel = true;
     private boolean asd;
     private FilaDePecas pecasDisponiveisNoJogo;
-    //   private Espaco[][] caixaPecaGuardada = new Espaco[4][4];
+    private Espaco[][] espacoPecaGuardada;
+    private Espaco[][] espacoPecasFuturas;
 
 
     public CampoDoJogo(Dimension tamanhoDoCampo, FilaDePecas pecasDisponiveisNoJogo) {
         this.pecasDisponiveisNoJogo = pecasDisponiveisNoJogo;
+        tamanhoDoCampo.width *= 2;
+        tamanhoDoCampo.height *= 2;
         preencherCampo(tamanhoDoCampo);
+        preencherEspacoPecaGuardada(tamanhoDoCampo.height);
+        preencherEspacoPecasFuturas(tamanhoDoCampo.height);
+
+        int tamanhoMaximoDasPecasEmpilhadas = 0;
+        for (; tamanhoDoCampo.height >= tamanhoMaximoDasPecasEmpilhadas + 10; tamanhoMaximoDasPecasEmpilhadas += 10);
+        pecasDisponiveisNoJogo.preencherFila(tamanhoMaximoDasPecasEmpilhadas / 10);
+
+
+    }
+
+    public void preencherEspacoPecasFuturas(int height) {
+
+        espacoPecasFuturas = new Espaco[height][11];
+
+        for (int i = 0; i < espacoPecasFuturas.length; i++) {
+            for (int j = 0; j < espacoPecasFuturas[0].length; j++) {
+
+                espacoPecasFuturas[i][j] = new Espaco(Espaco.ESPACO_LADO_ESQUERDO);
+
+            }
+
+        }
+    }
+
+    public void preencherEspacoPecaGuardada(int height) {
+
+        espacoPecaGuardada = new Espaco[height][11];
+
+        for (int i = 0; i < espacoPecaGuardada.length; i++) {
+            for (int j = 0; j < espacoPecaGuardada[0].length; j++) {
+
+                espacoPecaGuardada[i][j] = new Espaco(Espaco.ESPACO_LADO_ESQUERDO);
+
+            }
+
+        }
+
     }
 
     public void preencherCampo(Dimension tamanhoDoCampo) {
 
-        for (int i = 0; i < tamanhoDoCampo.height * 2; i++) {
+        for (int i = 0; i < tamanhoDoCampo.height; i++) {
 
             ArrayList<Espaco> lista = new ArrayList<>();
 
-            for (int j = 0; j < tamanhoDoCampo.width * 2; j++) {
+            for (int j = 0; j < tamanhoDoCampo.width; j++) {
                 lista.add(new Espaco(Espaco.ESPACO_VAZIO));
             }
 
@@ -67,6 +105,7 @@ public class CampoDoJogo implements KeyListener {
 
 
             adicionarPeca(pecasDisponiveisNoJogo.getPrimeiraPeca());
+            atualizarPecasFuturas();
 
             Thread gravidade = new Thread(new Runnable() {
                 @Override
@@ -93,6 +132,37 @@ public class CampoDoJogo implements KeyListener {
 
             if (!pecaFixa)
                 fixarPeca();
+
+
+        }
+    }
+
+    private void atualizarPecasFuturas() {
+
+        List<FormatoMatriz> pecasFuturas = pecasDisponiveisNoJogo.getPecas();
+
+        for (int i = 0; i < espacoPecasFuturas.length; i++) {
+            for (int j = 0; j < espacoPecasFuturas[0].length; j++) {
+                espacoPecasFuturas[i][j].setTipo(Espaco.ESPACO_LADO_ESQUERDO);
+            }
+        }
+
+
+        for (int i = 1, iPeca = 0; i < espacoPecasFuturas.length && iPeca < pecasFuturas.size(); i += pecasFuturas.get(iPeca).getFormatoMatriz().length + 2, iPeca++) {
+
+            String[][] formatoPecaAtual = pecasFuturas.get(iPeca).getFormatoMatriz();
+            for (int j = 0; j < formatoPecaAtual.length; j++) {
+                for (int k = 0; k < formatoPecaAtual[0].length; k++) {
+                    if (formatoPecaAtual[j][k] != null) {
+
+                        espacoPecasFuturas[i + j][k + 1].setTipo(formatoPecaAtual[j][k]);
+
+                    }
+
+
+                }
+
+            }
 
 
         }
@@ -153,22 +223,28 @@ public class CampoDoJogo implements KeyListener {
                 adicionarPeca(pecasDisponiveisNoJogo.getPrimeiraPeca());
             }
 
-            moverPara(0, 0);
+
             pecaGuardada = formatoMatriz;
+
+            for (int i = 1; i < 10; i++) {
+                for (int j = 0; j < espacoPecaGuardada[0].length; j++) {
+                    espacoPecaGuardada[i][j].setTipo(Espaco.ESPACO_LADO_ESQUERDO);
+                }
+            }
+
+            for (int i = 0; i < pecaGuardada.getFormatoMatriz().length; i++) {
+                for (int j = 0; j < pecaGuardada.getFormatoMatriz()[0].length; j++) {
+                    if (pecaGuardada.getFormatoMatriz()[i][j] != null)
+                        espacoPecaGuardada[i + 1][j + 1].setTipo(pecaGuardada.getFormatoMatriz()[i][j]);
+                }
+
+            }
 
         }
 
-        // caixaPecaGuardada = new Espaco[4][4];
-//proxima peça fazer dps
-//        for (int i = 0; i < pecaAtual.getFormatoMatriz().length; i++) {
-//            for (int j = 0; j < pecaAtual.getFormatoMatriz()[0].length; j++) {
-//                if (pecaAtual.getFormatoMatriz()[i][j] != null) {
-//
-//
-//                }
-//
-//            }
-//        }
+        moverPara(0, 0);
+
+
     }
 
     public void posicaoFuturaPreVisao() {
@@ -281,7 +357,14 @@ public class CampoDoJogo implements KeyListener {
 
     public void imprimirGame(ArrayList<ArrayList<Espaco>> copia) {
 
+
+
         for (int i = 0; i < 15; i++) {
+
+            for (int j = 0; j < espacoPecaGuardada[0].length; j++) {
+                System.out.print("   ");
+
+            }
             for (int j = 0; j < gridGame.get(0).size(); j++) {
                 System.out.print(Espaco.ESPACO_VAZIO);
 
@@ -290,48 +373,27 @@ public class CampoDoJogo implements KeyListener {
         }
 
 
-        for (ArrayList<Espaco> lista :
-                copia) {
-
-
-            for (Espaco espaco :
-                    lista) {
-
-
-                System.out.print(espaco);
-
+        for (int i = 0; i < gridGame.size(); i++) {
+            for (int j = 0; j < espacoPecaGuardada[0].length; j++) {
+                System.out.print(espacoPecaGuardada[i][j]);
 
             }
+
+            for (int j = 0; j < gridGame.get(0).size(); j++) {
+                System.out.print(copia.get(i).get(j));
+            }
+
+            for (int j = 0; j < espacoPecasFuturas[0].length; j++) {
+                System.out.print(espacoPecasFuturas[i][j]);
+            }
+
             System.out.println();
 
         }
 
 
-        //imprimir caixa da peça guardada fazer dps
-//        for (int i = 0; i < caixaPecaGuardada.length; i++) {
-//            for (int j = 0; j < caixaPecaGuardada[0].length; j++) {
-//                if (caixaPecaGuardada[i][j] != null) {
-//                    System.out.print(caixaPecaGuardada[i][j]);
-//
-//                } else {
-//                    System.out.print(Espaco.ESPACO_VAZIO);
-//                }
-//            }
-//        }
-
     }
 
-    public void imprimirMatriz(Object[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-
-                System.out.print(matriz[i][j]);
-
-            }
-            System.out.println();
-        }
-
-    }
 
 
     private ArrayList<ArrayList<Espaco>> clonarGridPrincipal() {
@@ -621,6 +683,7 @@ public class CampoDoJogo implements KeyListener {
 
         quebrarLinhas();
         adicionarPeca(pecasDisponiveisNoJogo.getPrimeiraPeca());
+        atualizarPecasFuturas();
         posicaoFuturaPreVisao();
         trocaDisponivel = true;
 

@@ -1,33 +1,45 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 public class FilaDePecas {
 
     private final Queue<FormatoMatriz> fila = new LinkedList<>();
-    private final FormatoMatriz[] pecasDisponiveis;
+    private final Peca[] pecasDisponiveis;
     private static Random random = new Random();
 
-    public FilaDePecas(FormatoMatriz[] pecasDisponiveis) {
+
+    public FilaDePecas(Peca[] pecasDisponiveis) {
         this.pecasDisponiveis = pecasDisponiveis;
-        for (int i = 0; i < 4; i++) {
+
+
+
+    }
+
+    public void preencherFila(int tamanhoDaFila) {
+        for (int i = 0; i < tamanhoDaFila; i++) {
             addElementoAleatorio();
         }
     }
 
 
-
-    public FormatoMatriz getPrimeiraPeca () {
+    public FormatoMatriz getPrimeiraPeca() {
         addElementoAleatorio();
         return fila.poll();
     }
 
-    public Queue<FormatoMatriz> getPecas() {
-        return fila;
+    public List<FormatoMatriz> getPecas() {
+        return fila.stream().toList();
     }
 
     private void addElementoAleatorio() {
-        fila.add(pecasDisponiveis[random.nextInt(pecasDisponiveis.length)]);
+
+        try {
+            fila.add((Peca) pecasDisponiveis[random.nextInt(pecasDisponiveis.length)].clone());
+
+        } catch (Exception e) {
+
+        }
+
     }
+
+
 }
