@@ -8,7 +8,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //FilaDePecas filaDePecas = new FilaDePecas(new Peca[]{new L()});
        // FilaDePecas filaDePecas = new FilaDePecas(new Peca[]{new PecaMaluca(), new I(), new L()});
         FilaDePecas filaDePecas = new FilaDePecas(Peca.todasAsPecas);
 

@@ -503,6 +503,8 @@ public class CampoDoJogo implements KeyListener {
         moverPara(0, 0);
     }
 
+    //refatorar depois as funcoes de rotacao
+
     void girarPecaHorario() {
 
 
