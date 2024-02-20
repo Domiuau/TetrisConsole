@@ -25,15 +25,19 @@
 - Colisão
 - Caso alguma peça chegue ao topo do campo, o jogo finalizará
 - Prévia de onde a peça irá cair/fixar
+  
 ![Prévia](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/previa.png)
 
 - Rotação
+  
 ![Rotação](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/rotacao.png)
 
 - Quebra de linha
+  
 ![Quebra de linha](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/quebraDeLinha.png)
 
 - É possivel adicionar qualquer peça no jogo, seguindo as seguintes regras: ser uma matrix 4x4 e obedecendo o grid da seguinte forma:
+  
 ![Criação de peça](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/exemploComoCriarPeca.png)
 
 basta usar as constantes da classe "Espaco" para montar a peça, que ela funcionará normalmente com colisões como qualquer outra
