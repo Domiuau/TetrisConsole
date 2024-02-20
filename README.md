@@ -10,6 +10,7 @@
 
 # Como jogar
 
+- (importante) Ao executar o game, uma telinha invisível irá abrir, ela é usada apenas para capturar o teclado, o foco do pc deve ser mantido nela, caso contrario, os comandos não funcionarão
 - Seta para a direita: move a peça 1 espaço para a direita
 - Seta para a esquerda: move a peça 1 espaço para a esquerda
 - Seta para baixo: move a peça 1 espaço para baixo (a peça é fixada ao encostar em algo)
