@@ -8,7 +8,22 @@
 
 ![Tela inicial](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/tetrisTSPIN.png)
 
-# Exemplo de como uma ferramenta funciona
+# Como jogar
+
+- Seta para a direita: move a peça 1 espaço para a direita
+- Seta para a esquerda: move a peça 1 espaço para a esquerda
+- Seta para baixo: move a peça 1 espaço para baixo (a peça é fixada ao encostar em algo)
+- Espaço: fixa a peça imediatamente na posição futura dela, representada por uma peça cinza
+- Shift: guarda a peça atual para usar mais tarde
+- Seta para cima: se possível, rotaciona a peça no sentido horário
+- Ctrl esquerdo: se possível, rotaciona a peça no sentido anti-horário
+
+# Funcionalidades da gameplay
+
+- Ao lado esquerdo do jogo, a peça guardada usando o "Shift" é exibida
+- Ao lado direito, as futuras peças em ordem
+
+
 
 ![Exemplo ferramenta](https://github.com/Domiuau/yunemeapp/blob/master/Assets/yuneme3.png) 
 
