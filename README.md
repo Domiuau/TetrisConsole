@@ -6,7 +6,7 @@
 
 # Imagem do jogo
 
-![Tela inicial](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/tetrisTSPIN.png)
+![Imagem do jogo](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/tetrisTSPIN.png)
 
 # Como jogar
 
@@ -22,6 +22,14 @@
 
 - Ao lado esquerdo do jogo, a peça guardada usando o "Shift" é exibida
 - Ao lado direito, as futuras peças em ordem
+- Colisão
+- Prévia de onde a peça irá cair/fixar
+![Prévia](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/previa.png)
+
+- Rotação
+![Prévia](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/rotacao.png)
+
+
 
 
 
