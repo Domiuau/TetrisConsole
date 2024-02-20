@@ -1,6 +1,6 @@
 public class PecaMaluca extends Peca {
 
-    private String[][] formatoPecaJ = {
+    private String[][] formatoPecaMaluca = {
             {null, null, Espaco.COR_S, Espaco.COR_J, null, null, Espaco.COR_I, Espaco.COR_O},
             {null, null, Espaco.COR_Z, Espaco.COR_T, null, null, Espaco.COR_L, Espaco.COR_T},
             {Espaco.COR_S, Espaco.COR_Z, null, null, Espaco.COR_T, Espaco.COR_S, null, null,},
@@ -11,16 +11,32 @@ public class PecaMaluca extends Peca {
             {null, null, Espaco.COR_J, Espaco.COR_I, null, null, Espaco.COR_Z, Espaco.COR_S},
 
 
-
     };
+
+//    private String[][] formatoExemplo = {
+//            {null, null,   null, null,   null, null,   null, null},
+//            {null, null,   null, null,   null, null,   null, null},
+//
+//            {null, null,   null, null,   null, null,   null, null},
+//            {null, null,   null, null,   null, null,   null, null},
+//
+//            {null, null,   null, null,   null, null,   null, null},
+//            {null, null,   null, null,   null, null,   null, null},
+//
+//            {null, null,   null, null,   null, null,   null, null},
+//            {null, null,   null, null,   null, null,   null, null},
+//
+//
+//    };
+
 
     @Override
     public String[][] getFormatoMatriz() {
-        return formatoPecaJ;
+        return formatoPecaMaluca;
     }
 
     @Override
     public void setFormatoMatriz(String[][] novoFormato) {
-        this.formatoPecaJ = novoFormato;
+        this.formatoPecaMaluca = novoFormato;
     }
 }
