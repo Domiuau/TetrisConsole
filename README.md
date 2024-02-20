@@ -2,7 +2,7 @@
 
 - Tetris feito no console com ascii
 - O jogo funciona como deveria funcionar, porém sistemas como pontuação e ajuste de velocidade não estão disponiveis (não pretendo adicionar), apenas a gameplay base está feita
-- Cada pixel do jogo consiste em uma String com 3 espaços ("   " ou " . ") pintadas com uma das poucas cores disponiveis
+- Cada pixel do jogo consiste em uma String com 3 espaços pintados
 
 # Imagem do jogo
 
