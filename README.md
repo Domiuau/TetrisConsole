@@ -60,7 +60,7 @@ basta usar as constantes da classe "Espaco" para montar a peça, que ela funcion
 
 - NÃO tente rodar no mac, o jogo quebra totalmente, e no linux não sei o que acontece
 - É recomendado que o console seja exibido em modo janela, assim é possivel maximizar o tamanho dele
-- Caso esteja em um monitor com resolução menor que 1920x1080, diminua o tamanho do campo no método main (O padrão é 20x10) ou diminua o tamanho dos caracteres de seu console
+- Caso esteja em um monitor com resolução menor que 1920x1080, diminua o tamanho do campo no método main (O padrão é 10x20) ou diminua o tamanho dos caracteres de seu console
   
 ```bash
 # clonar repositório
