@@ -43,6 +43,8 @@
 
 basta usar as constantes da classe "Espaco" para montar a peça, que ela funcionará normalmente com colisões como qualquer outra
 
+![Peça maluca](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/PecaMaluca.png)
+
 - É possivel escolher as peças disponiveis no jogo e o tamanho do campo, basta mudar o construtor e o vetor de Peças no metodo main
   
   ![Main](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/Main.png)
