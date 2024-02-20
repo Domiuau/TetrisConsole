@@ -42,42 +42,29 @@
 
 basta usar as constantes da classe "Espaco" para montar a peça, que ela funcionará normalmente com colisões como qualquer outra
 
-![Peça maluca](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/PecaMaluca.png)
-
-
-
-
-
-
-
+- É possivel escolher as peças disponiveis no jogo e o tamanho do campo, basta mudar o construtor e o vetor de Peças no metodo main
+  
+  ![Main](https://github.com/Domiuau/TetrisConsole/blob/master/Assets/Main.png)
+  
 
 # Tecnologias utilizadas
-## Back end
 - Java
-- Android SDK
-- Firebase
-- Firestore Database
-- Firebase analytics
+- Só java
 
-# Como executar o aplicativo
+# Como executar o jogo
 
-- O aplicativo está disponível gratuitamente para download em:
-https://play.google.com/store/apps/details?id=com.yuneme.myapplicationz
+- Apenas procure pela classe "Main" onde se encontra o metodo main, e execute
 
-![QRcode playstore](https://github.com/Domiuau/yunemeapp/blob/master/Assets/yuneme7.png)
+# Requisitos
 
-- O aplicativo aparecerá desta forma:
+- NÃO tente rodar no mac, o jogo quebra totalmente, e no linux não sei o que acontece
+- É recomendado que o console seja exibido em modo janela, assim é possivel maximizar o tamanho dele
+- Caso esteja em um monitor com resolução menor que 1920x1080, diminua o tamanho do campo no método main (O padrão é 20x10) ou diminua o tamanho dos caracteres de seu console
   
-![Como vai aparecer](https://github.com/Domiuau/yunemeapp/blob/master/Assets/yuneme8.png)
-
-- Ao abrir, a seguinte tela será executada:
-  
-![Tela cadastro / login](https://github.com/Domiuau/yunemeapp/blob/master/Assets/yuneme6.png)
-  
-- Não é necessário criar conta para utilizar o aplicativo, basta entrar como visitante
-  
-
-
+```bash
+# clonar repositório
+git clone https://github.com/Domiuau/TetrisConsole
+```
 
 # Autor
 
